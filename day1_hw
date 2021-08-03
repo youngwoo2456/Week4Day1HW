@@ -1,0 +1,64 @@
+-- #1
+SELECT *
+FROM actor
+WHERE last_name LIKE 'Wahlberg'
+-- 2
+
+-- #2
+SELECT COUNT(amount)
+FROM payment
+WHERE amount >= 3.99 and amount <= 5.99
+-- 5607
+
+-- #3
+SELECT *
+FROM inventory
+-- skipped
+
+-- #4
+SELECT *
+FROM customer
+WHERE last_name LIKE 'Wiliam'
+-- 0
+
+-- #5
+SELECT staff_id, COUNT(customer_id)
+FROM rental
+GROUP BY staff_id 
+ORDER BY staff_id ASC
+-- staff id 1
+
+-- #6
+SELECT *
+FROM film_category
+-- not sure where to find district names
+
+-- #7
+SELECT *
+FROM film_actor
+
+
+-- #8
+SELECT store_id, last_name
+FROM customer
+WHERE last_name LIKE '%es'
+ORDER BY store_id
+-- 13
+
+-- #9
+SELECT *
+FROM payment
+WHERE amount > 
+
+
+-- #10
+SELECT SUM(title)
+FROM film
+ORDER BY rating
+
+
+
+
+
+
+
