@@ -1,19 +1,23 @@
 -- #1
 SELECT *
 FROM actor
-WHERE last_name LIKE 'Wahlberg'
+WHERE last_name LIKE 'Wahlberg';
 -- 2
 
 -- #2
 SELECT COUNT(amount)
 FROM payment
-WHERE amount >= 3.99 and amount <= 5.99
+WHERE amount >= 3.99 and amount <= 5.99;
 -- 5607
 
+--also works: WHERE amount BETWEEN 3.99 and 5.99
+
 -- #3
-SELECT *
+SELECT film_id, COUNT(film_id)
 FROM inventory
--- skipped
+GROUP BY film_id
+ORDER BY COUNT(film_id) DESC;
+-- many
 
 -- #4
 SELECT *
@@ -28,14 +32,29 @@ GROUP BY staff_id
 ORDER BY staff_id ASC
 -- staff id 1
 
+-- another method in ex
+SELECT COUNT(rental_id), staff_id
+FROM rental
+GROUP BY staff_id
+ORDER BY COUNT(rental_id) DESC;
+
+
 -- #6
 SELECT *
-FROM film_category
--- not sure where to find district names
+FROM address
+
+SELECT COUNT(DISTINCT district)
+FROM address;
+--378 , wasn't able to find district before
+
 
 -- #7
-SELECT *
+SELECT COUNT(actor_id), film_id
 FROM film_actor
+GROUP BY film_id
+ORDER BY COUNT(actor_id) DESC;
+--508
+
 
 
 -- #8
@@ -45,16 +64,31 @@ WHERE last_name LIKE '%es'
 ORDER BY store_id
 -- 13
 
--- #9
-SELECT *
-FROM payment
-WHERE amount > 
+--OR 
+SELECT count(*), store_id
+FROM customer
+WHERE last_name LIKE '%es'
+GROUP BY store_id
 
+-- #9
+--wasn't sure how to do this one
+SELECT COUNT(*), amount
+FROM payment
+WHERE customer_id BETWEEN 380 and 430
+GROUP BY amount
+HAVING COUNT(*)>250;
+
+--3 payments
 
 -- #10
-SELECT SUM(title)
+SELECT *, 
 FROM film
-ORDER BY rating
+
+SELECT count(*), rating
+FROM film
+GROUP BY rating
+ORDER BY COUNT(*) DESC;
+--5 categories, most PG-13
 
 
 
